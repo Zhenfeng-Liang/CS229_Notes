@@ -1,0 +1,17 @@
+Lecture 1:
+	1. Linear Regression
+		a. LMS (Least Mean Square) algorithm. gradient descent algorithm; 
+			i. batch gradient descent algorithm(Go through the entire trainning set for each update)
+			ii. stochastic gradient descent, incremental gradient descent ( update parameter each time we encounter a trainning example). This is preferred when trainning set is large.
+				This parameter may oscillate around the true minimum. One other way is to lower the learning rate to zero as the algorithm runs
+		
+		b. Normal equation (solve the minimum explicitly, quadratic equation, matrix derivative)
+		
+		c. OLS probablistic interpretation, assume error term Gaussian, we could write down the likelihood function for each observation, 
+			maximize log likelihood function can be re-written as to minimize least square cost function
+			
+		d. Local weighted linear regression. Add weight term to the cost function for each observation. Weight could be determined by different kernels. Common 
+			one is exponential. Think of this as a sum of multiple linear regression. Each regression focus on a sub section of the sample. If bandwidth parameter (tau)
+			is lower, for each regression, the weight is lower for those further away from the x in question, so we would have a better fit locally, overall better fit 
+			in the trainning example. (Be careful about overfit though)
+			
