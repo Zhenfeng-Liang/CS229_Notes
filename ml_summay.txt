@@ -14,4 +14,21 @@ Lecture 1:
 			one is exponential. Think of this as a sum of multiple linear regression. Each regression focus on a sub section of the sample. If bandwidth parameter (tau)
 			is lower, for each regression, the weight is lower for those further away from the x in question, so we would have a better fit locally, overall better fit 
 			in the trainning example. (Be careful about overfit though)
-			
+	
+	2. Classification and Logistic Regression
+		a. logistic function / singmoid function. Maximize likelihood to estimate the parameter. The form of the stochastic gradient ascent update rule is identical 
+		with linear regression but not the hypothesis function
+		b. Digression, the perceptron learning algorithm. Replace the logistic function with a step function
+		c. Fisher scoring: use Newton-Raphson to maximize the likelihood function for logistic regression. It's usually faster than batch gradient ascent if number of regressor not large
+		
+	3. Generalized Linear Models
+		a. The exponential family distribution: p(y; eta) = b(y)exp(eta^T T(y) - a(eta)). Any distribution can be written as the form like that is a exponential family. (Gaussian, Bernoulli, etc)
+		b. OLS y|x;theta ~ N(miu, sig^2); Logistic Regression y|x;theta ~ Bernoulli(phi) 
+		c. GLM is a flexible generalization of ordinary linear regression that allows for response variable that have error distribution models other than normal distribution.
+		d. GLM assumptions.
+			i. y | x; theta ~ ExponentialFamily(eta)
+			ii. prediction h(x) = E(y|x)
+			iii. eta = theta^T x
+		e. OLS, Logistic Regression, Softmax Regression (Not quite certain) are GLM.
+		
+		
