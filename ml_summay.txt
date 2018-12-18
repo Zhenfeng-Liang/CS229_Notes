@@ -31,4 +31,23 @@ Lecture 1:
 			iii. eta = theta^T x
 		e. OLS, Logistic Regression, Softmax Regression (Not quite certain) are GLM.
 		
-		
+
+Lecture 2:
+	1. Generative learning algorithm: algo that models p(x|y) and p(y); instead of model P(y|x) directly which is discriminative learning algorithm
+	
+	2. Gaussian discriminant analysis:
+		a. y ~ Bernoulli, x|y=0 ~ N(miu0, cov), x|y=1 ~ N(miu1, cov); basically model the feature distribution under each scenario using multivariate normal distribution; 
+		b. MLE estimator can be calc from trainning sample
+		c. GDA and logistic assumptions: GDA makes stronger assumptions (Gaussian) and more data efficient if the assumptions are correct.
+	
+	3. Naive Bayes (Multi-variate Bernoulli event model)
+		a. discrete valued of x (test classification, size of the x vector is the size of the vocabulary) and GDA has continuous real valued x.
+		b. Naive Bayes (NB) assumption: x_i are conditionally independent given y. If we model x_i directly with multinominal distribution, there would be too many parameters to estimate.
+		c. The fit here is to get the probability of each scenario from the trainning set instead of the parameter of the distribution like mean vector in GDA
+		d. If GDA doesn't work very well, one could try to discretize the x to use multinominal
+		e. Laplace smoothing:
+			i. this is to avoid the 0 probability estimate if some x were not seen in the trainning sample
+		f. Multinomial event model. (size of the x vector is the length of the trainning sample, x_i contains the location of the word in the dictionary). This is a multinominal distribution
+		g. side note: Bernoulli distribution describte single trial of a binary result, while binomial distribution is the sum of multiple Bernoulli variable. 
+			Same as Multinoulli distribution and Multinomial distribution but the results are not binary any more.
+			
