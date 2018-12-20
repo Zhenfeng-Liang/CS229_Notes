@@ -51,3 +51,23 @@ Lecture 2:
 		g. side note: Bernoulli distribution describte single trial of a binary result, while binomial distribution is the sum of multiple Bernoulli variable. 
 			Same as Multinoulli distribution and Multinomial distribution but the results are not binary any more.
 			
+Lecture 3:
+	1. Margins:
+		a. Functional margin r(i) = y(y) (w^Tx +b)
+		b. Geometric margin: the scale of the functional margin doesn't matter. Geometric margin = functional margin / norm of w
+		c. The optimal margin classifier is to maximize the margin. (optimization problem). With some transformation tricks, this will be turned into a problem can be solved with KKT
+	2. Optimal margin classifiers:
+		a. Due to complementary slackness of KKT conditions, only the alpha on the support vectors would be non-zero. The predictions can be written in terms of the trainning data
+	3. Kernel:
+		a. Feature mapping is to convert the original input attributes into a higher dimensional space. 
+		b. Kernel function can be written as dot product of the feature mapping
+		c. kernel function is usually much less inexpensive to compute compared to explicitly compute the high dimensional feature mapping. Reduce complexity
+		d. Mercer theorem: Kernel function is valid i.f.f the kernel matrix is symmetric positive semi-definite matrix
+		e. Idea: through feature mapping, we can fit non-linear more complex problem but introduced high dimensional computation problems. Kernel can help reduce the computation cost.
+		
+	4. Regularization:
+		a. Put in regularization can give SVM a tolerance to those outliers. Not to classify everything 100% in the trainning sample but keeping a large margin.
+		
+	5. SMO (sequential minimal optimization) algorithm:
+		a. for each parameter, use coordinate ascent to find the parameter to maximize the objective function. Loop until it converge.
+			
