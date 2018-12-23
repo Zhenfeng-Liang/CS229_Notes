@@ -70,4 +70,54 @@ Lecture 3:
 		
 	5. SMO (sequential minimal optimization) algorithm:
 		a. for each parameter, use coordinate ascent to find the parameter to maximize the objective function. Loop until it converge.
+	
+	
+Lecture 4: Learning Theory
+	1. Bias and variance trade off. 
+	2. Empirical risk minimization (ERM) minimize the trainning error
+	3. For finite H, the trainning sample size needed is linear to log k, where k is the number of hypothesis, given margin and confidence level.
+	4. For infinite H, the trainning sample size needed is linear to d, where d is the number of parameter given the margin and confidence level.
+	5. Vapnik-Chernonenkis (VC(H)) dimension, is the size of the largest set that is shattered by H
+	
+	
+Lecture 5: (Regularization and model selection)
+	1. hold-out cross validation (simple cross validation), one cut cross validation, usually 70:30.
+	2. k-fold cross validation: cut data into k-fold, every time use one of those as validation set, so run the cross validation k times and take the average
+		of the generalization error to pick the model. (leave-one-out cross validation: each cut of sample is just one observation)
+	3. Feature selection:
+		a. Forward search: starting from zero feature, keep adding new best feature if the updated model can reduce the cross validation generalization error. 
+			The algo basically adds the features in the order of it's usefulness.
+		b. Backward search: starting from the full set of features, and deleting the feature in the order of its uselessness.
+		c. Above are computation expensive. So we can use filter feature selection. Mutual information (MI) is a kind of measure about the dependency between the label and the feature.
+			Sorted the feature in the order of the MI. With the ranks, use cross validation to select the most important features...
 			
+Lecture 6:
+	1. The perceptron and large margin classifiers. Online learning: predict while trained. The number of mistakes that the perceptron algorithm makes on this sequence is 
+		bounded by a function of margin and maximum x norm.
+		
+		
+Lecture 7a: (k-means clustering algorithm)
+	1. select intial cluster centroids (miu_i)
+		repeat until convergence: {
+			for each sample point, group to the closest cluster centroid
+			
+			for each group, recalculate the cluster centroid with the averge of the sample in the group
+		}
+	2. distortion function, J(c, miu) = sum(||x_i - miu_(c_i)||^2) for all the samples. The algorithm is basically running the coordinate descent on J, 
+		the first loop in to minimize J with respect to c and the second loop is to minimize J with respect to miu 
+
+
+Lecture 7b: (Mixtures of Gaussians and the EM algorithm)
+	1. Mixtures of Gaussian: for each sample x_i, it could be generated randomly from one of the k Gaussian distributions. The latent variable z will also have a distribution.
+	2. l (log likelihood) = sum(log p) = sum(log sum (p(x_i|z_j) * p(z_j)))
+	3. EM (Expectation-Maximization) algorithm. In the E-step, it "guess" the value of z_j, and in the M-step, it runs the maximization based on the guess. This runs for each sample 
+		and each possible Gaussian guess. Repeat until convergence.
+
+
+Lecture 8: (The EM algorithm)
+	1. Jensen's inequality: for convex function, E[f(x)] >= f(EX). The equality only holds true if and only if X=E[X] with probability 1, i.e. if X is a constant.
+	2. The idea is find the lower bound of the log likelihood function using Jensen's inequality of concave function. And then find the condition to make the equality 
+		hold true, i.e. the variable is constant. Then you could write down the "guess" of the distribution with probability. Then the maximization step can be solved 
+		by finding theta. EM algo can be viewed as coordinate ascent on J, E-step maximize it with respect to Q and M maximize it with respect to theta.
+	3. To find the fit of each Gaussian in the mixture Gaussian, we just need to take the derivative of the maximization objective function with respect to each one of the variable,
+		and set them to zero. With some algebra, we can have a very clean form.
